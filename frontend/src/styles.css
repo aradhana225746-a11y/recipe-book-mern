@@ -232,10 +232,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   font-family:inherit;
   font-weight:inherit;
   font-style:normal;
-  color:#344b36;
+  color:#272c25;
   transform-origin:left center;
   white-space:nowrap;
-  text-shadow:2px 3px 0 #bfd0af;
 }
 .intro h1.hero-malayalam span:first-child{
   font-size:clamp(49px,5.6vw,79px);
@@ -243,8 +242,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 .intro h1.hero-malayalam span:last-child{
   font-size:clamp(48px,5.4vw,77px);
-  color:#b6553d;
-  text-shadow:2px 3px 0 #edc7aa;
+  color:#272c25;
   transform:rotate(1.5deg);
   margin-left:.22em;
 }
