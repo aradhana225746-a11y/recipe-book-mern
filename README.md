@@ -10,7 +10,15 @@ A responsive recipe journal built with MongoDB Atlas, Express, React and Node.js
 ## Run locally
 1. Install Node.js 18 or newer.
 2. Create a **test-only** MongoDB Atlas cluster, database user, and configure Network Access to allow your IP.
-3. Replace the deliberately unusable placeholder `MONGODB_URI` in `backend/.env` with your own **test** Atlas database URI. Do not put production secrets in a public repository.
+3. Keep the committed `backend/.env` as dummy configuration. Create a local `backend/.env.local` file (already ignored by Git) with your **test-only** Atlas connection URI. The local file overrides the dummy values without risking a public password commit:
+
+```env
+MONGODB_URI=mongodb+srv://aradhanarose1707_db_user:YOUR_TEST_PASSWORD@cluster0.avnewsh.mongodb.net/recipe_book?retryWrites=true&w=majority
+PORT=5000
+CLIENT_ORIGIN=http://localhost:5173
+```
+
+Replace `YOUR_TEST_PASSWORD` with your Atlas database-user password. URL-encode special characters in the password. Do **not** paste your password into GitHub or this chat. If reusing a cluster, grant the test user `readWrite` access only to `recipe_book` and allow your current IP in Atlas Network Access.
 4. From the repository root run:
 ```bash
 npm install
@@ -18,7 +26,7 @@ npm run dev
 ```
 5. Open http://localhost:5173. Backend is http://localhost:5000. Vite proxies `/api` to the backend.
 
-Both frontend and backend have committed `.env` files with safe placeholder values. For a separate frontend host set `VITE_API_URL` to its full API endpoint before building.
+Both frontend and backend have committed `.env` files with safe placeholder values. A real test URI goes only in the Git-ignored `backend/.env.local`. For a separate frontend host set `VITE_API_URL` to its full API endpoint before building.
 
 ## API
 | Method | Endpoint | Function |
