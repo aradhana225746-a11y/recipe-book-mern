@@ -52,3 +52,13 @@ Example POST/PUT JSON:
 Features: validated create/edit form, responsive recipe cards, details modal, search, category filter, deletion confirmation, loading/error notices and automatic re-fetch following every write.
 
 **Important:** The included database URI is a dummy, not a working Atlas connection. Configure a dedicated test database to verify end-to-end functionality.
+
+## Additional features
+- **Cook Mode:** large step-by-step instructions, arrow-key navigation, progress and ingredient prep checklist (cooking progress is temporary; the recipes remain in MongoDB).
+- **Persistent favorites:** `PATCH /api/recipes/:id/favorite` toggles `isFavorite` in MongoDB, with a favorites filter.
+- **Persistent shopping list:** add ingredients from a recipe or manually, check items and remove them. Stored in a separate MongoDB collection; duplicate ingredient text is deduplicated case-insensitively.
+- **Quick discovery:** Under-30-minute filter and Surprise Me recipe picker.
+
+Shopping list API: `GET /api/shopping-list`, `POST /api/shopping-list` with `{ "ingredients": ["item"] }`, `PATCH /api/shopping-list/:id` with `{ "checked": true }`, `DELETE /api/shopping-list/:id`, and `DELETE /api/shopping-list/checked`.
+
+These features keep all stored recipe and shopping-list data in MongoDB; only the temporary step and checklist positions during a cooking session live in browser memory.
