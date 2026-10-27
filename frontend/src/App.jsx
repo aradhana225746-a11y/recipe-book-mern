@@ -350,7 +350,7 @@ export default function App() {
       <header className="site-header">
         <div className="container header-inner">
           <a href="#top" className="brand" aria-label="Savour home">savour<span>.</span></a>
-          <span className="header-note">THE PERSONAL RECIPE INDEX</span>
+          <span className="header-note">THE LITTLE KITCHEN BOOK</span>
           <button className="header-shopping" onClick={() => setShopping(true)}><ShoppingBasket size={17}/><span>Shopping list</span>{shoppingItems.length>0&&<b>{shoppingItems.filter(x=>!x.checked).length}</b>}</button>
           <button className="header-create" onClick={() => setEditing("new")}><Plus size={16}/> <span>Add recipe</span></button>
         </div>
@@ -358,23 +358,23 @@ export default function App() {
       <main>
         <section className="intro container" aria-labelledby="intro-title">
           <div className="intro-top">
-            <span>YOUR RECIPE ARCHIVE</span>
-            <span>EST. IN YOUR KITCHEN</span>
+            <span>FROM THE KITCHEN TABLE</span>
+            <span>A BOOK OF GOOD THINGS</span>
           </div>
           <div className="intro-body">
-            <h1 id="intro-title">The good ones,<br/><em>all in one place.</em></h1>
+            <h1 id="intro-title">A pinch of this,<br/><em>a dash of that.</em></h1>
             <div className="intro-aside">
-              <p>Your own collection of tried, loved, and often-requested recipes. Easy to save. Even easier to find again.</p>
-              <a className="intro-link" href="#collection">Explore collection <ArrowDownRight size={18}/></a>
+              <p>For recipes scribbled on scraps, passed across the table, and known by heart. Gather the good ones here, to cook and to keep.</p>
+              <a className="intro-link" href="#collection">Open the recipe book <ArrowDownRight size={18}/></a>
             </div>
           </div>
-          <div className="intro-bottom"><span>RECIPES WORTH REPEATING</span><span>AN EVERYDAY COOKBOOK <span aria-hidden="true">↗</span></span></div>
+          <div className="intro-bottom"><span>MADE WITH A LITTLE EXTRA LOVE</span><span>STIRRED, SHARED &amp; SAVED <span aria-hidden="true">↗</span></span></div>
         </section>
 
         <section className="catalog container" id="collection" aria-labelledby="collection-title">
           <div className="catalog-head">
             <div>
-              <span className="section-kicker">01 / THE COLLECTION</span>
+              <span className="section-kicker">01 / THE RECIPE BOX</span>
               <div className="catalog-title-line"><h2 id="collection-title">Your recipes</h2><span className="total-count">{String(recipes.length).padStart(2, "0")}</span></div>
             </div>
             <button className="catalog-create" onClick={() => setEditing("new")}>
@@ -457,7 +457,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-inner"><a className="brand" href="#top">savour<span>.</span></a><span>THE PERSONAL RECIPE INDEX</span><span>KEEP THE GOOD ONES.</span></div></footer>
+      <footer className="site-footer"><div className="container footer-inner"><a className="brand" href="#top">savour<span>.</span></a><span>THE LITTLE KITCHEN BOOK</span><span>A GOOD RECIPE IS WORTH KEEPING.</span></div></footer>
 
       {toast && <div className={"toast" + (toast.kind === "error" ? " toast-error" : "")} role="status">
         {toast.kind === "error" ? <X size={16}/> : <Check size={16}/>}
