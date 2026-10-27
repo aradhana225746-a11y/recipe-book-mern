@@ -13,6 +13,28 @@ app.disable("x-powered-by");
 app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:5173" }));
 app.use(express.json({ limit: "100kb" }));
 
+let isConnected = false;
+async function connectDB() {
+  if (isConnected && mongoose.connection.readyState === 1) return;
+  const uri = process.env.MONGODB_URI;
+  if (!uri || uri.includes("example.mongodb.net") || uri.includes("replace-with-test-password") || uri.includes("YOUR_PASSWORD") || uri.includes("<db_password>")) {
+    throw new Error("Invalid or placeholder MONGODB_URI. Set MONGODB_URI in environment variables.");
+  }
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 10000 });
+  isConnected = true;
+}
+
+// Middleware to ensure DB connection before handling requests (needed for serverless like Vercel)
+app.use(async (_req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error("MongoDB Atlas connection failed:", error.message);
+    res.status(500).json({ message: "Database connection failed: " + error.message });
+  }
+});
+
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", database: mongoose.connection.readyState === 1 ? "connected" : "disconnected" });
 });
@@ -49,4 +71,8 @@ async function startServer() {
   }
 }
 
-startServer();
+if (require.main === module) {
+  startServer();
+}
+
+module.exports = app;

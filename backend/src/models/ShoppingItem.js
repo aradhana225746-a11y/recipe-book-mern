@@ -6,4 +6,4 @@ const shoppingItemSchema = new mongoose.Schema({
   checked: { type: Boolean, default: false }
 }, { timestamps: true, versionKey: false });
 
-module.exports = mongoose.model("ShoppingItem", shoppingItemSchema);
+module.exports = mongoose.models.ShoppingItem || mongoose.model("ShoppingItem", shoppingItemSchema);

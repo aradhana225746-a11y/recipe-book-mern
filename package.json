@@ -2,12 +2,25 @@
   "name": "recipe-book-mern",
   "version": "1.0.0",
   "private": true,
-  "workspaces": ["frontend", "backend"],
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
     "dev": "concurrently -k -n API,WEB -c green,cyan \"npm run dev -w backend\" \"npm run dev -w frontend\"",
     "start": "npm run start -w backend",
     "build": "npm run build -w frontend"
   },
-  "devDependencies": { "concurrently": "^9.1.2" },
-  "engines": { "node": ">=18.0.0" }
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
