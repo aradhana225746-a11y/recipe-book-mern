@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const path = require("path");
 
 dotenv.config({ path: path.join(__dirname, "..", ".env") });
+// Load real test credentials from this git-ignored file, keeping the committed .env safe.
+dotenv.config({ path: path.join(__dirname, "..", ".env.local"), override: true });
 
 const app = express();
 app.disable("x-powered-by");
@@ -31,8 +33,8 @@ app.use((error, _req, res, _next) => {
 
 async function startServer() {
   const uri = process.env.MONGODB_URI;
-  if (!uri || uri.includes("example.mongodb.net") || uri.includes("replace-with-test-password")) {
-    console.error("Set MONGODB_URI in backend/.env to your MongoDB Atlas TEST database URI.");
+  if (!uri || uri.includes("example.mongodb.net") || uri.includes("replace-with-test-password") || uri.includes("YOUR_PASSWORD") || uri.includes("<db_password>")) {
+    console.error("Set MONGODB_URI in backend/.env.local to your MongoDB Atlas TEST database URI.");
     process.exitCode = 1;
     return;
   }
