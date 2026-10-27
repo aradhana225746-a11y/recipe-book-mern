@@ -142,7 +142,7 @@ function RecipeDetails({ recipe, onClose, onEdit, onDelete }) {
           <h2>{recipe.name}<span className="accent-period">.</span></h2>
           <div className="detail-time"><Clock3 size={16}/>{recipe.cookingTime} minutes</div>
         </div>
-        <span className="detail-side-bottom">SAVOUR / RECIPE ARCHIVE</span>
+        <span className="detail-side-bottom">RUCHI / RECIPE ARCHIVE</span>
       </div>
       <div className="detail-content">
         <div className="detail-header">
@@ -349,7 +349,7 @@ export default function App() {
     <div className="site" id="top">
       <header className="site-header">
         <div className="container header-inner">
-          <a href="#top" className="brand" aria-label="Savour home">savour<span>.</span></a>
+          <a href="#top" className="brand" aria-label="Ruchi home">ruchi</a>
           <span className="header-note">THE LITTLE KITCHEN BOOK</span>
           <button className="header-shopping" onClick={() => setShopping(true)}><ShoppingBasket size={17}/><span>Shopping list</span>{shoppingItems.length>0&&<b>{shoppingItems.filter(x=>!x.checked).length}</b>}</button>
           <button className="header-create" onClick={() => setEditing("new")}><Plus size={16}/> <span>Add recipe</span></button>
@@ -362,7 +362,7 @@ export default function App() {
             <span>A BOOK OF GOOD THINGS</span>
           </div>
           <div className="intro-body">
-            <h1 id="intro-title">A pinch of this,<br/><em>a dash of that.</em></h1>
+            <h1 id="intro-title" className="hero-malayalam"><span>ഇവിടെ</span><span>എല്ലാമുണ്ട്</span></h1>
             <div className="intro-aside">
               <p>For recipes scribbled on scraps, passed across the table, and known by heart. Gather the good ones here, to cook and to keep.</p>
               <a className="intro-link" href="#collection">Open the recipe book <ArrowDownRight size={18}/></a>
@@ -457,7 +457,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-inner"><a className="brand" href="#top">savour<span>.</span></a><span>THE LITTLE KITCHEN BOOK</span><span>A GOOD RECIPE IS WORTH KEEPING.</span></div></footer>
+      <footer className="site-footer"><div className="container footer-inner"><a className="brand" href="#top">ruchi</a><span>THE LITTLE KITCHEN BOOK</span><span>A GOOD RECIPE IS WORTH KEEPING.</span></div></footer>
 
       {toast && <div className={"toast" + (toast.kind === "error" ? " toast-error" : "")} role="status">
         {toast.kind === "error" ? <X size={16}/> : <Check size={16}/>}
