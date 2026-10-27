@@ -17,6 +17,7 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", database: mongoose.connection.readyState === 1 ? "connected" : "disconnected" });
 });
 app.use("/api/recipes", require("./routes/recipes"));
+app.use("/api/shopping-list", require("./routes/shopping-list"));
 app.use("/api", (_req, res) => res.status(404).json({ message: "API endpoint not found." }));
 
 app.use((error, _req, res, _next) => {

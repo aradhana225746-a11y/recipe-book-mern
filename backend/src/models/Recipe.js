@@ -29,6 +29,7 @@ const recipeSchema = new mongoose.Schema(
         message: "Add at least one preparation step."
       }
     },
+    isFavorite: { type: Boolean, default: false },
     cookingTime: {
       type: Number,
       required: [true, "Cooking time is required."],

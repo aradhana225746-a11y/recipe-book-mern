@@ -77,6 +77,19 @@ router.put("/:id", checkId, asyncRoute(async (req, res) => {
   return res.json({ message: "Recipe updated successfully.", recipe });
 }));
 
+// Separate favorite endpoint keeps recipe editing independent from saved status.
+router.patch("/:id/favorite", checkId, asyncRoute(async (req, res) => {
+  if (typeof req.body?.isFavorite !== "boolean") {
+    return res.status(400).json({ message: "isFavorite must be true or false." });
+  }
+  const recipe = await Recipe.findByIdAndUpdate(
+    req.params.id, { isFavorite: req.body.isFavorite },
+    { new: true, runValidators: true }
+  );
+  if (!recipe) return res.status(404).json({ message: "Recipe not found." });
+  return res.json({ message: "Favorite updated.", recipe });
+}));
+
 router.delete("/:id", checkId, asyncRoute(async (req, res) => {
   const deleted = await Recipe.findByIdAndDelete(req.params.id);
   if (!deleted) return res.status(404).json({ message: "Recipe not found." });
